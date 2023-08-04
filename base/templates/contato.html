@@ -35,19 +35,43 @@
                 <span class="fs-4">Pet online</span>
           </a>
         </header>      
-        </header>
         <main>
-            <h1>Formulário de Contato</h1>
-            <form action="">
-                <label for="id_nome">Nome:</label>
-                <input type="text" id="id_nome">
+          <h1>Formulário de Contato</h1>
+          <p>
+            <!--Nessa tag p consigo puxar informações atraves de parametros buscado na view do template-->
+            Envie uma mensagem através do formulário abaixo ou ligue para o telefone {{telefone}}
+            falando com o responsável {{responsavel| upper}}.
+          </p>
+          <form action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="id_nome">Nome:</label>
+                  <input type="text" class="form-control" id="id_nome" name="Nome">
+                </div>
+              </div>
 
-                <label for="id_email">E-mail</label>
-                <input type="email" id="id_email">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="id_email">E-mail</label>
+                  <input type="email" class="form-control" id="id_email" name="E-mail">
+                </div>
+              </div>
 
-                <label for="id_mensagem">Mensagem</label>
-                <textarea name="Mensagem" id="id_mensagem" cols="30" rows="10"></textarea>
-            </form>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="id_mensagem">Mensagem</label>
+                  <textarea name="Mensagem" class="form-control" id="id_mensagem" cols="30" rows="10"></textarea>
+                </div>
+              </div>
+            </div>
+
+                <hr>
+                  <button type="submit" class="btn btn-primary">Enviar Mensagem </button>
+            
+          </form>
+
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
             Curso Python Ultima School
