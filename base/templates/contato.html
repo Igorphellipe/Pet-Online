@@ -1,82 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Online - Reserve já o banho do seu Pet</title>
-</head>
-   <!-- Bootstrap core CSS -->
-   <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
-   <style>
-     .bd-placeholder-img {
-       font-size: 1.125rem;
-       text-anchor: middle;
-       -webkit-user-select: none;
-       -moz-user-select: none;
-       user-select: none;
-     }
-
-     @media (min-width: 768px) {
-       .bd-placeholder-img-lg {
-         font-size: 3.5rem;
-       }
-     }
-   </style>
-
-   
-   <!-- Custom styles for this template -->
-   <link href="/static/css/starter-template.css" rel="stylesheet">
- </head>
- <body>
-    <div class="col-lg-8 mx-auto p-3 py-md-5">
-        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-          <a href="{% url 'inicio' %}" class="d-flex align-items-center text-dark text-decoration-none">
-                <span class="fs-4">Pet online</span>
-          </a>
-        </header>      
-        <main>
-          <h1>Formulário de Contato</h1>
-          <p>
-            <!--Nessa tag p consigo puxar informações atraves de parametros buscado na view do template-->
-            Envie uma mensagem através do formulário abaixo ou ligue para o telefone {{telefone}}
-            falando com o responsável {{responsavel| upper}}.
-          </p>
-          <form action="" method="post">
-            {% csrf_token %}
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="id_nome">Nome:</label>
-                  <input type="text" class="form-control" id="id_nome" name="Nome">
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="id_email">E-mail</label>
-                  <input type="email" class="form-control" id="id_email" name="E-mail">
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="id_mensagem">Mensagem</label>
-                  <textarea name="Mensagem" class="form-control" id="id_mensagem" cols="30" rows="10"></textarea>
-                </div>
-              </div>
-            </div>
-
-                <hr>
-                  <button type="submit" class="btn btn-primary">Enviar Mensagem </button>
-            
-          </form>
-
-        </main>
-        <footer class="pt-5 my-5 text-muted border-top">
-            Curso Python Ultima School
-        </footer>
-    </div>
-    <script src="/static/js/bootstrap.bundle.min.js"></script>
- </body>
-</html>
+{% extends 'inicio.html' %}
+{% load bootstrap5 %}
+{% block principal %}
+<h1>Formulário de Contato</h1>
+<p>
+  <!--Nessa tag p consigo puxar informações atraves de parametros buscado na view do template-->
+    Envie uma mensagem através do formulário abaixo ou ligue para o telefone {{telefone}}
+    falando com o responsável {{responsavel| upper}}.
+</p>
+{% if sucesso %}
+<p class="alert alert-success">Mensagem enviada com sucesso!</p>
+{% endif %}
+<form action="" method="post" novalidate>
+  {% csrf_token %}
+  <!--Esse Tagtemplate busca o formulario criado no bootstrap-->
+  {% bootstrap_form form %}
+  <!--A linha abixo referência o Botão de enviar mensagem-->
+  <hr>
+  <button type="submit" class="btn btn-primary">Enviar Mensagem </button> 
+</form>
+{% endblock %}

@@ -37,8 +37,11 @@
         </header>
     <div class="col-lg-8 mx-auto p-3 py-md-5">
         <main>
+          <!--Criando uma herança de estrutura para redundancia nas proximas paginas-->
+          {% block principal %}
             <h1>Reserve já o banho do seu Pet</h1>
             <a href="{% url 'contato' %}">Formulário de contato</a>
+          {% endblock %}
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
             Curso Python Ultima School
