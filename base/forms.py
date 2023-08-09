@@ -10,3 +10,10 @@ class ContatoForm(forms.Form):
     nome = forms.CharField()
     email = forms.EmailField()
     mensagem = forms.CharField(widget=forms.Textarea)
+
+
+class ReservaPet(forms.Form):
+    Nome_do_Pet = forms.CharField()
+    Telefone = forms.CharField()
+    Dia_Reserva = forms.DateField(help_text='aaaa-mm-dd')
+    Observacao = forms.CharField(widget=forms.Textarea)

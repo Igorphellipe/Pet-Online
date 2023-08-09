@@ -40,7 +40,11 @@
           <!--Criando uma herança de estrutura para redundancia nas proximas paginas-->
           {% block principal %}
             <h1>Reserve já o banho do seu Pet</h1>
-            <a href="{% url 'contato' %}">Formulário de contato</a>
+            <ul>
+              <li><a href="{% url 'contato' %}">Formulário de contato</a></li>
+              <li><a href="{% url 'reserva' %}">Reservar Horário</a></li>
+            </ul>
+            
           {% endblock %}
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
