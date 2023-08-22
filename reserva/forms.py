@@ -8,7 +8,7 @@ class ReservaForm(forms.ModelForm):
         data = self.cleaned_data['data']
         hoje = date.today()
         dat = Reserva.objects.filter(data=data).count()
-        if dat > 4:
+        if dat >= 4:
             raise forms.ValidationError('Não é possivel realizar reserva')
         elif data < hoje:
             raise forms.ValidationError('Não é possivel realizar uma reserva para o passado')
