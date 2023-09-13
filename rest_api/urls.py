@@ -1,9 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 
-from rest_api.views import hello_world
+from rest_api.views import contatos, reservas
+
 
 app_name = 'rest_api'
 
 urlpatterns = [
-    path('hello_world', hello_world, name='hello_world_api')
+    path('contatos/', contatos, name='contatos'),
+    path('reservas/', reservas, name='reservas')
 ]

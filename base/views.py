@@ -51,6 +51,10 @@ def login_usuario(request):
         if usuario is not None:
             login(request, usuario)
             return redirect('inicio')
+        else:
+            formulario = AuthenticationForm()
+            return render(request, 'login.html', {'formulario': formulario, 'erro': 'Usuário ou senha invalidos'})
+        
 
 #View de logout 
 def logout_usuario(request):
