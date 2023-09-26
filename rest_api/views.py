@@ -4,7 +4,18 @@ import json
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from base.models import Contato, Reserva
-from django.http import HttpResponse
+from rest_framework.viewsets import ModelViewSet
+from rest_api.serializers import AgendamentoModelSerializer, ContatoModelSerializer
+
+
+
+class AgendamentoModelViewSet(ModelViewSet):
+    queryset = Reserva.objects.all()
+    serializer_class = AgendamentoModelSerializer
+
+class ContatoModelViewSet(ModelViewSet):
+    queryset = Contato.objects.all()
+    serializer_class = ContatoModelSerializer
 
 
 @api_view(['GET', 'POST'])

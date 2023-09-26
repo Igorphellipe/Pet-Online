@@ -19,5 +19,5 @@ class Contato(models.Model):
 class Reserva(models.Model):
     nome_do_pet = models.CharField(max_length=50)
     telefone = models.CharField(max_length=25)
-    dia_da_reserva = models.DateField(auto_now_add=True)
+    dia_da_reserva = models.DateField()
     observacao = models.TextField()
