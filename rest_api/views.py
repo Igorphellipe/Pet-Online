@@ -1,9 +1,14 @@
 from django.shortcuts import render
 import datetime as dt
+
 import json
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
 from base.models import Contato, Reserva
+
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.viewsets import ModelViewSet
 from rest_api.serializers import AgendamentoModelSerializer, ContatoModelSerializer
 
@@ -12,10 +17,15 @@ from rest_api.serializers import AgendamentoModelSerializer, ContatoModelSeriali
 class AgendamentoModelViewSet(ModelViewSet):
     queryset = Reserva.objects.all()
     serializer_class = AgendamentoModelSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ContatoModelViewSet(ModelViewSet):
     queryset = Contato.objects.all()
     serializer_class = ContatoModelSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
 
 
 @api_view(['GET', 'POST'])
