@@ -55,8 +55,12 @@
 
           {% endif %}
           
-          <a href="{% url 'api:contatos' %}" class="nav-link">
+          <a href="{% url 'api' %}" class="nav-link">
             <span class="fs-4">API</span>
+          </a>
+          
+          <a href="http://127.0.0.1:8000/admin/" class="nav-link">
+            <span class="fs-4">ADM - PET</span>
           </a>
         
 
@@ -68,7 +72,7 @@
           {% block principal %}
             <h1>Reserve já o banho do seu Pet</h1>
             <ul class="list-group">
-              <li class="list-group-item list-group-item-action"><a href="{% url 'reserva:criar_reserva'%}" class="nav-link">Reservar Horário</a></li>
+              <li class="list-group-item list-group-item-action"><a href="{% url 'reserva'%}" class="nav-link">Reservar Horário</a></li>
               <li class="list-group-item list-group-item-action"><a href="{% url 'contato'%}" class="nav-link">Contato</a></li>
             </ul>
             

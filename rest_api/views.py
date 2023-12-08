@@ -5,29 +5,40 @@ import json
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from base.models import Contato, Reserva
+from base.models import Contato, Reserva, Petshop, PorteAnimal
 
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from rest_framework.viewsets import ModelViewSet
-from rest_api.serializers import AgendamentoModelSerializer, ContatoModelSerializer
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_api.serializers import AgendamentoModelSerializer, ContatoModelSerializer, PetshopModelSerializer, PorteAnimalModelSerializer
 
 
 
 class AgendamentoModelViewSet(ModelViewSet):
     queryset = Reserva.objects.all()
     serializer_class = AgendamentoModelSerializer
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ContatoModelViewSet(ModelViewSet):
     queryset = Contato.objects.all()
     serializer_class = ContatoModelSerializer
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class PetshopModelViewSet(ReadOnlyModelViewSet):
+    queryset = Petshop.objects.all()
+    serializer_class = PetshopModelSerializer
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class PorteAnimalModelViewSet(ReadOnlyModelViewSet):
+    queryset = PorteAnimal.objects.all()
+    serializer_class = PorteAnimalModelSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-
-
+    
 @api_view(['GET', 'POST'])
 def reservas(request):
     if request.method == 'POST':

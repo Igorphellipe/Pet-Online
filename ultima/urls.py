@@ -23,14 +23,16 @@ urlpatterns = [
     path('', inicio, name='inicio'),
 
     path('contato/', contato, name='contato'),
-    path('reserva/', include('reserva.urls', namespace='reserva')),
+    path('reserva/', reserva , name='reserva'),
+    path('api/', apis_disp, name='api'),
+    #include('reserva.urls', namespace='reserva')
 
     # Login e cadastro de Usuário
     path('login/', login_usuario, name='login_usuario'),
     path('logout/', logout_usuario, name='logout_usuario'),
     path('novo-usuario/', novo_usuario, name='novo_usuario'),
 
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='adm'),
     path('apt-auth/', include('rest_framework.urls')),
     path('api/', include('rest_api.urls', namespace='api')),
 ]

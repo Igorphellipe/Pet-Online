@@ -71,3 +71,6 @@ def novo_usuario(request):
         if formulario.is_valid():
             formulario.save()
             return redirect('inicio')
+
+def apis_disp(request):
+    return render (request, 'api_disp.html')

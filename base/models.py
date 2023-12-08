@@ -17,7 +17,33 @@ class Contato(models.Model):
 
 
 class Reserva(models.Model):
+    
+
     nome_do_pet = models.CharField(max_length=50)
     telefone = models.CharField(max_length=25)
     dia_da_reserva = models.DateField()
     observacao = models.TextField()
+    petshop = models.ForeignKey(
+        'Petshop', 
+        related_name='reservas',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+        )
+    porte = models.ForeignKey(
+        'PorteAnimal',
+        related_name='reservas',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
+
+class Petshop(models.Model):
+    nome = models.CharField(max_length=50)
+    rua = models.CharField(max_length=100)
+    numero = models.CharField(max_length=10)
+    bairro = models.CharField(max_length=50)
+
+class PorteAnimal(models.Model):
+    porte = models.CharField(max_length=50)
+
