@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_api',
     'rest_framework.authtoken',
+    
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+        'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "test_db.sqlite3",
+    },
 }
 
 

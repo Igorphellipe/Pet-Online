@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 from base.views import *
+from reserva.views import *
 
 urlpatterns = [
     path('', inicio, name='inicio'),
 
     path('contato/', contato, name='contato'),
-    path('reserva/', reserva , name='reserva'),
+    path('reserva/', criar_reserva , name='criar'),
     path('api/', apis_disp, name='api'),
     #include('reserva.urls', namespace='reserva')
 
