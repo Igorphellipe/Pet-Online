@@ -3,8 +3,7 @@ from datetime import date
 import pytest
 from model_bakery import baker
 
-
-'''from reserva.models import Reserva
+from reserva.models import Reserva
 
 @pytest.mark.django_db
 def test_str_reserva_deve_retornar_string_formatada():
@@ -16,12 +15,12 @@ def test_str_reserva_deve_retornar_string_formatada():
         turno = 'tarde'
     )
 
-    assert str(reserva) == 'Jerry: 2024-01-11 - tarde'''
+    assert str(reserva) == 'Jerry: 2024-01-11 - tarde'
+
+
 
 
 '''from base.models import Petshop, Reserva
-
-
 @pytest.mark.django_db
 def test_qtd_reservas_deve_retornar_reservas():
     petshop = baker.make(Petshop)
@@ -32,9 +31,8 @@ def test_qtd_reservas_deve_retornar_reservas():
         petshop=petshop
     )
 
-    assert petshop.qtd_reservas() == 3'''
-
-from reserva.models import Reserva
+    assert petshop.qtd_reservas() == 3
+'''
 
 @pytest.fixture
 def reserva():

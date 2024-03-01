@@ -38,6 +38,9 @@ class Reserva(models.Model):
         null=True
     )
 
+    def __str__(self):
+        return f'{self.nome_do_pet} - {self.dia_da_reserva}'
+
 class Petshop(models.Model):
     nome = models.CharField(max_length=50)
     rua = models.CharField(max_length=100)

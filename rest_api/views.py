@@ -2,7 +2,7 @@ from django.shortcuts import render
 import datetime as dt
 
 import json
-from rest_framework.decorators import api_view
+#from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from base.models import Contato, Reserva, Petshop, PorteAnimal
@@ -19,12 +19,14 @@ class AgendamentoModelViewSet(ModelViewSet):
     serializer_class = AgendamentoModelSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
+    
 
 class ContatoModelViewSet(ModelViewSet):
     queryset = Contato.objects.all()
     serializer_class = ContatoModelSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
+    
 
 class PetshopModelViewSet(ReadOnlyModelViewSet):
     queryset = Petshop.objects.all()
@@ -39,7 +41,7 @@ class PorteAnimalModelViewSet(ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     
-@api_view(['GET', 'POST'])
+'''@api_view(['GET', 'POST'])
 def reservas(request):
     if request.method == 'POST':
         dados = request.data 
@@ -95,5 +97,4 @@ def contatos(request):
                 'mensagem': contato.mensagem,
             })
         return Response(data=dados)
-
-
+'''

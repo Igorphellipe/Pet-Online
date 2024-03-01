@@ -5,7 +5,8 @@
 #Metodo form.as_p() -> gera um HTML desse formulário em forma de TAG p.
 
 from django import forms
-from base.models import Contato
+from base.models import Contato, Reserva
+from datetime import date
 
 class ContatoForm(forms.ModelForm):
     class Meta:
@@ -13,9 +14,18 @@ class ContatoForm(forms.ModelForm):
         fields = ['nome', 'email', 'mensagem']
 
 
-class ReservaPet(forms.Form):
-    Nome_do_Pet = forms.CharField()
-    Telefone = forms.CharField()
-    Dia_Reserva = forms.DateField(help_text='aaaa-mm-dd')
-    Observacao = forms.CharField(widget=forms.Textarea)
-    
+class ReservaPet(forms.ModelForm):
+
+    def clean_dia_da_reserva(self):
+        dia_da_reserva = self.cleaned_data['dia_da_reserva']
+        hoje = date.today()
+        dat = Reserva.objects.filter(dia_da_reserva=dia_da_reserva).count()
+        if dat >= 4:
+            raise forms.ValidationError('Não é possivel realizar reserva')
+        elif dia_da_reserva < hoje:
+            raise forms.ValidationError('Não é possivel realizar uma reserva para o passado')
+        return dia_da_reserva
+     
+    class Meta:
+        model = Reserva
+        fields = ['nome_do_pet', 'telefone', 'dia_da_reserva', 'observacao']

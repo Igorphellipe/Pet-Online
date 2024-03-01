@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from rest_api.views import contatos, reservas, PetshopModelViewSet, AgendamentoModelViewSet, ContatoModelViewSet, PorteAnimalModelViewSet
+from rest_api.views import PetshopModelViewSet, AgendamentoModelViewSet, ContatoModelViewSet, PorteAnimalModelViewSet
 
 from rest_framework.routers import SimpleRouter
 
@@ -13,11 +13,12 @@ router.register('contato', ContatoModelViewSet)
 router.register('petshop', PetshopModelViewSet)
 router.register('agenda-porte', PorteAnimalModelViewSet)
 
+urlpatterns = router.urls
 
-
-urlpatterns = [
+'''urlpatterns = [
     path('contatos/', contatos, name='contatos'),
     path('reservas/', reservas, name='reservas'),
 ]
 
 urlpatterns += router.urls
+'''

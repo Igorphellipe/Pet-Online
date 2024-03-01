@@ -22,22 +22,20 @@ def contato(request):
         'sucesso': sucesso
     }
     return render(request, 'contato.html', contexto)
+
 #View de Reserva
 def reserva(request):
-    sucesso = False
     form = ReservaPet(request.POST or None)
+    sucesso = False
     if form.is_valid():
         sucesso = True
-        nome_do_pet = form.cleaned_data['Nome_do_Pet']
-        telefone = form.cleaned_data['Telefone']
-        dia_da_reserva = form.cleaned_data['Dia_Reserva']
-        observacao = form.cleaned_data['Observacao']
-        Reserva.objects.create(nome_do_pet=nome_do_pet, telefone=telefone, dia_da_reserva=dia_da_reserva, observacao=observacao)
+        form.save()
     contexto = {
         'form': form,
         'sucesso': sucesso
     }
     return render(request, 'reserva.html', contexto)
+
 #View de Usuário login
 def login_usuario(request):
     if request.method == 'GET':
