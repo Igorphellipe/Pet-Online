@@ -1,0 +1,5 @@
+[run]
+omit = 
+    venv/*
+
+addopts = --cov=</Projetos/Pet-Online/reserva> <tests/test_forms.py>

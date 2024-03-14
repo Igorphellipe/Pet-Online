@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer, HyperlinkedRelatedField, PrimaryKeyRelatedField
 from rest_framework import serializers
-from base.models import Reserva, Contato, Petshop, PorteAnimal
+from base.models import Contato, Reserva, Petshop, PorteAnimal
+
 import datetime as dt
 
 
@@ -63,13 +64,6 @@ class PorteAnimalRelatedFieldCustomSerializer(PrimaryKeyRelatedField):
 
 
 class AgendamentoModelSerializer(ModelSerializer):
-    petshop = PetshopRelatedFieldCustomSerializer(
-        queryset=Petshop.objects.all(),
-        read_only=False
-    )
-    porte = PorteAnimalRelatedFieldCustomSerializer(
-        queryset=PorteAnimal.objects.all(),
-        read_only=False)
 
     def validate_dia_da_reserva(self, value):
         if value < dt.date.today():
