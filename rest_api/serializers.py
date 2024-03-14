@@ -63,13 +63,6 @@ class PorteAnimalRelatedFieldCustomSerializer(PrimaryKeyRelatedField):
 
 
 class AgendamentoModelSerializer(ModelSerializer):
-    petshop = PetshopRelatedFieldCustomSerializer(
-        queryset=Petshop.objects.all(),
-        read_only=False
-    )
-    porte = PorteAnimalRelatedFieldCustomSerializer(
-        queryset=PorteAnimal.objects.all(),
-        read_only=False)
 
     def validate_dia_da_reserva(self, value):
         if value < dt.date.today():

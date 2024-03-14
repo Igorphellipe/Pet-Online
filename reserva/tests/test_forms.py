@@ -9,7 +9,7 @@ def test_validacao_de_formulario():
         'nome': 'Joaquim',
         'email': 'joa@email.com',
         'nome_pet': 'Zeus',
-        'data': '2024-01-31',
+        'data': '2024-03-15',
         'turno': 'tarde',
         'tamanho': 2,
         'observacoes': 'Zeus muito bravo'

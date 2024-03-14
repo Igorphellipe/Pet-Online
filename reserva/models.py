@@ -17,7 +17,7 @@ class Reserva(models.Model):
     nome_pet = models.CharField(verbose_name='Nome do Pet', max_length=50)
     data = models.DateField(verbose_name='Data', help_text='aaaa-mm-dd')
     turno = models.CharField(verbose_name='Turno', max_length=10, choices=TURNO_OPCOES)
-    tamanho = models.IntegerField(verbose_name='Tamnaho', choices=TAMANHO_OPCOES)
+    tamanho = models.IntegerField(verbose_name='Tamanho', choices=TAMANHO_OPCOES)
     observacoes = models.TextField(blank=True)
     
     def __str__(self):
