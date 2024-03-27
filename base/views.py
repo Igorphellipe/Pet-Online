@@ -8,6 +8,7 @@ from base.models import Contato, Reserva
 #Definindo a View Inicio- Função 
 def inicio(request):
     return render(request, 'inicio.html')
+
 #View de Contato
 def contato(request):
     sucesso = False
