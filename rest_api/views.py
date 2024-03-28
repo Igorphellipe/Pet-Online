@@ -5,6 +5,7 @@ import json
 #from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from rest_framework import filters
 
 from base.models import Contato, Reserva, Petshop, PorteAnimal
 
@@ -20,20 +21,25 @@ class AgendamentoModelViewSet(ModelViewSet):
     serializer_class = AgendamentoModelSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
-    
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['=id']
 
 class ContatoModelViewSet(ModelViewSet):
     queryset = Contato.objects.all()
     serializer_class = ContatoModelSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
-    
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['=id']
+        
 
 class PetshopModelViewSet(ReadOnlyModelViewSet):
     queryset = Petshop.objects.all()
     serializer_class = PetshopModelSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['=id']
 
 class PorteAnimalModelViewSet(ReadOnlyModelViewSet):
     queryset = PorteAnimal.objects.all()
