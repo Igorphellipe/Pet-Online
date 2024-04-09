@@ -17,7 +17,6 @@ class Contato(models.Model):
 
 
 class Reserva(models.Model):
-    
 
     nome_do_pet = models.CharField(max_length=50)
     telefone = models.CharField(max_length=25)
@@ -28,14 +27,15 @@ class Reserva(models.Model):
         related_name='reservas',
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
         )
-    porte = models.ForeignKey(
+    
+    porte_animal = models.ForeignKey(
         'PorteAnimal',
         related_name='reservas',
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
     )
 
     def __str__(self):
@@ -50,7 +50,11 @@ class Petshop(models.Model):
     def qtd_reservas(self):
         return self.reservas.count()
     
+    def __str__(self):
+        return f'{self.nome}'
 
 class PorteAnimal(models.Model):
-    porte = models.CharField(max_length=50)
+    porte_animal = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f'{self.porte_animal}'

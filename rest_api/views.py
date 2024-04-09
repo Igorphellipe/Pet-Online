@@ -2,10 +2,11 @@ from django.shortcuts import render
 import datetime as dt
 
 import json
-#from rest_framework.decorators import api_view
+
 from rest_framework.response import Response
 
-from rest_framework import filters
+from rest_framework.filters import SearchFilter 
+from django_filters.rest_framework import DjangoFilterBackend
 
 from base.models import Contato, Reserva, Petshop, PorteAnimal
 
@@ -21,16 +22,16 @@ class AgendamentoModelViewSet(ModelViewSet):
     serializer_class = AgendamentoModelSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['=id']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['nome_do_pet']
 
 class ContatoModelViewSet(ModelViewSet):
     queryset = Contato.objects.all()
     serializer_class = ContatoModelSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['=id']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['nome']
         
 
 class PetshopModelViewSet(ReadOnlyModelViewSet):
@@ -38,70 +39,14 @@ class PetshopModelViewSet(ReadOnlyModelViewSet):
     serializer_class = PetshopModelSerializer
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['=id']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id']
 
 class PorteAnimalModelViewSet(ReadOnlyModelViewSet):
     queryset = PorteAnimal.objects.all()
     serializer_class = PorteAnimalModelSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
-
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['porte_animal']
     
-'''@api_view(['GET', 'POST'])
-def reservas(request):
-    if request.method == 'POST':
-        dados = request.data 
-        nome_do_pet = dados['nome_do_pet']
-        telefone = dados['telefone']
-        dia_da_reserva = dt.datetime.strptime(dados['dia_da_reserva'], '%d/%m/%y').date()
-        observacao = dados['observacao']
-        reserva = Reserva.objects.create(nome_do_pet=nome_do_pet, telefone=telefone, dia_da_reserva=dia_da_reserva, observacao=observacao
-        )
-        dados_reserva = {
-            'id': reserva.id,
-            'nome_do_pet': reserva.nome_do_pet,
-            'telefone': reserva.telefone,
-            'dia_da_reserva': reserva.dia_da_reserva,
-            'observacao': reserva.observacao,
-        }
-        return Response(data=dados_reserva)
-    else:
-        reservas = Reserva.objects.all()
-        dados = []
-        for reserva in reservas:
-            dados.append({
-                'nome_do_pet': reserva.nome_do_pet,
-                'telefone': reserva.telefone,
-                'dia_da_reserva': reserva.dia_da_reserva,
-                'observacao': reserva.observacao,
-            })
-        return Response(data=dados)
-
-#Código feito com o professor.
-@api_view(['GET', 'POST'])
-def contatos(request):
-    if request.method == 'POST':
-        dados = request.data
-        nome = dados['nome']
-        email = dados['email']
-        mensagem = dados['mensagem']
-        contato = Contato.objects.create(nome=nome, email=email, mensagem=mensagem)
-        dados_contato = {
-            'id': contato.id,
-            'nome': contato.nome,
-            'email': contato.email,
-            'mensagem': contato.mensagem
-        }
-        return Response(data=dados)
-    else:
-        contatos = Contato.objects.all()
-        dados = []
-        for contato in contatos:
-            dados.append({
-                'nome': contato.nome,
-                'email': contato.email,
-                'mensagem': contato.mensagem,
-            })
-        return Response(data=dados)
-'''

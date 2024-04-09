@@ -28,9 +28,9 @@
    <!-- Custom styles for this template -->
    <link href="/static/css/starter-template.css" rel="stylesheet">
  </head>
- <body>
-  <div  class="col-lg-8 mx-auto p-3 py-md-5">
-   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+  <body>
+   <div  class="col-lg-8 mx-auto p-3 py-md-5">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <ul class="nav">
             <a class="navbar-brand" href="{% url 'inicio' %}">
              <img src="/static/imagens/logo-pet.jpeg" alt="logo-pet" width="63px" height="30px" class="d-inline-block align-text-top">
@@ -38,7 +38,7 @@
           
           <li class="nav-item" role="presentation">
            <a class="nav-link" href="{% url 'api' %}" >
-            <span class="fw-bold"> API </span>
+            <span class="fw-bold"> API's </span>
           </a></li>
 
           <li class="nav-item" role="presentation">
@@ -73,7 +73,17 @@
         <main>
           <!--Criando uma herança de estrutura para redundancia nas proximas paginas-->
           {% block principal %}
-            <h1 class="text-center">FAÇA SUA RESERVA</h1>
+          <!--Criação da descrição do site e como ele funciona-->
+          <div>
+           <h1 class="text-primary text-center"> PETSHOP MUNDO PET</h1>
+            <p>
+              Bem vindo ao Petshop Mundo Pet, aqui você poderá fazer a reserva do banho banho do seu Pet de forma 
+
+
+            </p>
+           <hr>
+          </div>
+            <h2 class="text-primary text-center">FAÇA SUA RESERVA</h2>
             <ul class="list-group">
               <li class="list-group-item list-group-item-action"><a href="{% url 'criar'%}" class="nav-link">
                 <span class="fw-bold">Reservar Horário</span>

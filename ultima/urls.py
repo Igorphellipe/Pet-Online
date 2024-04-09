@@ -24,7 +24,7 @@ urlpatterns = [
     path('', inicio, name='inicio'),
 
     path('contato/', contato, name='contato'),
-    path('reserva/', criar_reserva , name='criar'),
+    path('reserva/', reserva , name='criar'),
     path('api/', apis_disp, name='api'),
     #include('reserva.urls', namespace='reserva')
 

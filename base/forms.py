@@ -28,4 +28,4 @@ class ReservaPet(forms.ModelForm):
      
     class Meta:
         model = Reserva
-        fields = ['nome_do_pet', 'telefone', 'dia_da_reserva', 'observacao']
+        fields = ['nome_do_pet', 'telefone', 'dia_da_reserva', 'petshop', 'porte_animal', 'observacao']
