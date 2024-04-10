@@ -23,7 +23,7 @@ class AgendamentoModelViewSet(ModelViewSet):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['nome_do_pet']
+    filterset_fields = ['nome_do_pet', 'dia_da_reserva']
 
 class ContatoModelViewSet(ModelViewSet):
     queryset = Contato.objects.all()

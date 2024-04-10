@@ -31,15 +31,22 @@
   <body>
    <div  class="col-lg-8 mx-auto p-3 py-md-5">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <ul class="nav">
+        <ul class="nav nav-tabs">
             <a class="navbar-brand" href="{% url 'inicio' %}">
              <img src="/static/imagens/logo-pet.jpeg" alt="logo-pet" width="63px" height="30px" class="d-inline-block align-text-top">
-             <span class="fw-bold" >MUNDO PET</span></a>
+            <span class="fw-bold" >MUNDO PET</span></a>
           
-          <li class="nav-item" role="presentation">
-           <a class="nav-link" href="{% url 'api' %}" >
-            <span class="fw-bold"> API's </span>
-          </a></li>
+          <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{% url 'api' %}" role="button" aria-expanded="false" >
+            <span class="fw-bold"> API's </span></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="api/agenda">Api - Reserva</a></li>
+              <li><a class="dropdown-item" href="api/petshop">Api - Local e Reserva</a></li>
+              <li><a class="dropdown-item" href="api/contato">Api - Contatos</a></li>
+              <li><a class="dropdown-item" href="api/agenda-porte">Api - Reserva e Porte</a></li>
+
+            </ul>
+          </li>
 
           <li class="nav-item" role="presentation">
            <a class="nav-link" href="http://127.0.0.1:8000/admin/" >
@@ -75,9 +82,12 @@
           {% block principal %}
           <!--Criação da descrição do site e como ele funciona-->
           <div>
-           <h1 class="text-primary text-center"> PETSHOP MUNDO PET</h1>
-            <p>
-              Bem vindo ao Petshop Mundo Pet, aqui você poderá fazer a reserva do banho banho do seu Pet de forma 
+            <img src="/static/imagens/logo-pet.jpeg" alt="logo-pet" width="300px" height="100px" class="position-relative top-10 start-50 translate-middle" >
+           <p>
+              Bem vindo ao Petshop Mundo Pet, aqui você poderá fazer a reserva do banho do seu Pet de forma rapida
+              e segura nossa plataforma oferece o melhor para facilitar o o banho de seu Pet.
+              
+              <br>E também disponibilizamos nossas Api's para agendamento e vizualizar disponibilidade de horários
 
 
             </p>
